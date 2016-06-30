@@ -8,11 +8,21 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
+{ spawn } = require 'child_process'
+
 module.exports = (robot) ->
 
-  # robot.hear /badger/i, (res) ->
-  #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
-  #
+  robot.hear /badger/i, (res) ->
+    spawn 'touch', ['/home/shane/Documents/sloopbot/testing']
+    res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+
+  robot.listen(
+    (message) ->
+      message.user.name is "shane" and message.text is "pong"
+    (response) ->
+      response.reply "Hello, master"
+  )
+
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
   #   if doorType is "pod bay"
