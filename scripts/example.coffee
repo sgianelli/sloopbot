@@ -13,8 +13,10 @@
 module.exports = (robot) ->
 
   robot.hear /badger/i, (res) ->
-    spawn 'touch', ['/home/shane/Documents/sloopbot/testing']
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+
+  robot.hear /foo/i, (res) ->
+    res.send "hooked"
 
   robot.listen(
     (message) ->
