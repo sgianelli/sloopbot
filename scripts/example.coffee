@@ -8,8 +8,6 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-{ spawn } = require 'child_process'
-
 module.exports = (robot) ->
 
   robot.hear /badger/i, (res) ->
@@ -23,6 +21,13 @@ module.exports = (robot) ->
       message.user.name is "shane" and message.text is "pong"
     (response) ->
       response.reply "Hello, master"
+  )
+
+  ropot.listen(
+    (message) ->
+      (message.user.name is "shane" or message.user.name is "benjin") and message.text.toLowerCase() is "rumba?"
+    (response) ->
+      response.reply "Rumba?"
   )
 
   # robot.respond /open the (.*) doors/i, (res) ->
