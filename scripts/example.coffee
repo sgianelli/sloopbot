@@ -25,7 +25,7 @@ module.exports = (robot) ->
 
   ropot.listen(
     (message) ->
-      (message.user.name is "shane" or message.user.name is "benjin") and message.text.toLowerCase() is "rumba?"
+      (message.user.name is "shane" or message.user.name is "benjin") and message.text is "rumba?"
     (response) ->
       response.reply "Rumba?"
   )
