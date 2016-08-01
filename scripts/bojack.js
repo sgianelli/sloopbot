@@ -1,6 +1,6 @@
 module.exports = function (robot) {
     var links = {
-        "": "http://i.imgur.com/SpIy8VY.gifv",
+        "all i am": "http://i.imgur.com/SpIy8VY.gifv",
         "": "http://i.imgur.com/9WHKphD.gifv",
         "": "http://i.imgur.com/oL9vjID.gifv",
         "": "http://i.imgur.com/7p8Jtls.gifv",
@@ -50,11 +50,20 @@ module.exports = function (robot) {
         "": "http://i.imgur.com/G80glPZ.gifv"
     };
 
-    robot.hear(/^bojack me( \w+)?$/i, function (response) {
-        console.log("Response: ", response.match[0], response.match[1]);
+    function random() {
         var list = Object.keys(links).map(function (key) { return links[key] });
         var imageUrl = list[Math.floor(Math.random() * list.length)];
 
-        response.send(imageUrl);
+        return imageUrl;
+    }
+
+    robot.hear(/^bojack me( \w+)?$/i, function (response) {
+        var match = links[response.match[1].toLowerCase()];
+
+        if (match) {
+            response.send(match);
+        } else {
+            response.send(random());
+        }
     });
 };
