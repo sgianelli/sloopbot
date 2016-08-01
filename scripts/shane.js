@@ -1,7 +1,7 @@
 module.exports = function (robot) {
     robot.listen(function (message) {
-        for (key in response) {
-            console.log(" - " + key + " : " + response[key]);
+        for (key in message) {
+            console.log(" - " + key + " : " + message[key]);
         }
 
         return message == "slutty";
