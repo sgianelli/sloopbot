@@ -4,9 +4,9 @@ module.exports = function (robot) {
             console.log(" - " + key + " : " + message[key]);
         }
 
-        robot.emit('slack.reaction', { message: response, name: "+1" });
+        robot.emit('slack.reaction', { message: message, name: "+1" });
 
-        return message == "slutty";
+        return message.text == "slutty";
     }, function (response) {
     });
 
