@@ -1,5 +1,6 @@
 module.exports = function (robot) {
-    robot.hear(/r\/(\w+)/i, function (response) {
+
+    robot.hear(/^r\/(\w+)$/i, function (response) {
         response.send("http://reddit.com/" + response.match[0]);
     });
 
