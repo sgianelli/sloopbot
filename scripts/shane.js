@@ -1,7 +1,9 @@
 module.exports = function (robot) {
     robot.hear(/^slutty$/, function (response) {
-        console.log("response: " + response);
-        response.emit('slack.reaction', { message: "response", name: "+1" });
+        for (key in response) {
+            console.log(" - " + key + " : " + response[key]);
+        }
+        robot.emit('slack.reaction', { message: "response", name: "+1" });
     });
 
     robot.hear(/^r\/(\w+)$/i, function (response) {
