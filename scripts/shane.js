@@ -4,9 +4,10 @@ module.exports = function (robot) {
             console.log(" - " + key + " : " + message[key]);
         }
 
+        robot.emit('slack.reaction', { message: response, name: "+1" });
+
         return message == "slutty";
     }, function (response) {
-        robot.emit('slack.reaction', { message: response, name: "+1" });
     });
 
     robot.hear(/^r\/(\w+)$/i, function (response) {
