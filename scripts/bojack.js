@@ -50,7 +50,7 @@ module.exports = function (robot) {
         "http://i.imgur.com/G80glPZ.gifv"
     ];
 
-    robot.respond(/bojack me/i, function (message) {
-        message.send(links[Math.random() % links.length]);
+    robot.hear(/bojack me/i, function (response) {
+        response.send(links[Math.random() % links.length]);
     });
 };
