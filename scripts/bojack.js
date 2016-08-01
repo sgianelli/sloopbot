@@ -1,20 +1,20 @@
 module.exports = function (robot) {
-    var links = {
+    var Links = {
         "all i am": "http://i.imgur.com/SpIy8VY.gifv",
         "cavity search": "http://i.imgur.com/9WHKphD.gifv",
         "comic sans": "http://i.imgur.com/oL9vjID.gifv",
-        "let me guard down": "http://i.imgur.com/7p8Jtls.gifv",
+        "let my guard down": "http://i.imgur.com/7p8Jtls.gifv",
         "closing doors": "http://i.imgur.com/KQDQ4tv.gifv",
         "focus": "http://i.imgur.com/aYlk8Hq.gifv",
-        "vincent": "http://i.imgur.com/X9e0kfC.gifv",
         "celebration": "http://i.imgur.com/Olhs2Ns.gifv",
         "business factory": "http://i.imgur.com/CLl92RA.gifv",
+        "vincent": "http://i.imgur.com/X9e0kfC.gifv",
         "hooray": "http://i.imgur.com/d1EN5XB.gifv",
+        "hooray2": "http://i.imgur.com/kwxVMW3.gifv",
         "bad news": "http://i.imgur.com/GMlCdCo.gifv",
         "nothing": "http://i.imgur.com/a3WOSg2.gifv",
         "bowl of bourbon": "http://i.imgur.com/Vi92YLs.gifv",
         "mailmen": "http://i.imgur.com/hz2Nl3C.gifv",
-        "hooray2": "http://i.imgur.com/kwxVMW3.gifv",
         "absinthe": "http://i.imgur.com/AOnpk3W.gifv",
         "lighter": "http://i.imgur.com/8DlXJSi.gifv",
         "smart": "http://i.imgur.com/RsffiXS.gifv",
@@ -24,6 +24,7 @@ module.exports = function (robot) {
         "911": "http://i.imgur.com/MaUdf1W.gifv",
         "happiness": "http://i.imgur.com/IwEFZQX.gifv",
         "shapes": "http://i.imgur.com/cU8CcJx.gifv",
+        "shapes2": "http://i.imgur.com/zFHDUGj.gifv",
         "dollars": "http://i.imgur.com/nT3UlCd.gifv",
         "naked": "http://i.imgur.com/gftkHoS.gifv",
         "drugs": "http://i.imgur.com/vR83AFj.gifv",
@@ -37,7 +38,6 @@ module.exports = function (robot) {
         "muffins": "http://i.imgur.com/2eB3AiC.gifv",
         "internet": "http://i.imgur.com/CoVwuQZ.gifv",
         "real me": "http://i.imgur.com/IlzJJdm.gifv",
-        "shapes2": "http://i.imgur.com/zFHDUGj.gifv",
         "step off": "http://i.imgur.com/F4f7qfr.gifv",
         "angry nap": "http://i.imgur.com/0vK32U4.gifv",
         "stamos": "http://i.imgur.com/GtUZmVS.gifv",
@@ -50,8 +50,60 @@ module.exports = function (robot) {
         "void": "http://i.imgur.com/G80glPZ.gifv"
     };
 
+    var Categories = {
+        "bojack": [
+            "all i am",
+            "cavity search",
+            "comic sans",
+            "closing doors",
+            "focus",
+            "celebration",
+            "nothing",
+            "bowl of bourbon",
+            "absinthe",
+            "lighter",
+            "reindeer",
+            "911",
+            "happiness",
+            "shapes",
+            "shapes2",
+            "naked",
+            "drunk",
+            "muffins",
+            "real me",
+            "stamos",
+            "stamos2",
+            "show",
+            "when"
+        ],
+        "mr. peanutbutter": [
+            "mailmen",
+            "smart",
+            "void"
+        ],
+        "sarah lynn": [
+            "vajelly",
+            "dumbshit"
+        ],
+        "todd": [
+            "let my guard down",
+            "hooray",
+            "hooray2",
+            "bad news",
+            "shut up",
+            "angry nap"
+        ],
+        "vincent": [
+            "a business",
+            "vincent"
+        ],
+        "princess carolyn": [
+            "sloth"
+        ]
+    };
+
     function random() {
-        var list = Object.keys(links).map(function (key) { return links[key] });
+        var list = Object.keys(Links).map(function (key) { return Links[key] });
         var imageUrl = list[Math.floor(Math.random() * list.length)];
 
         return imageUrl;
@@ -59,10 +111,13 @@ module.exports = function (robot) {
 
     robot.hear(/^bojack me( (.*))?$/i, function (response) {
         var word = response.match[2].toLowerCase();
-        var match = links[word];
+        var match = Links[word];
+        var cMatch = Categories[word];
 
         if (word == "help") {
-            response.send(Object.keys(links).join("\n"));
+            response.send(Object.keys(Links).join("\n").sort());
+        } else if (cMatch) {
+            response.send(cMatch[Math.floor(Math.random() * cMatch.length)]);
         } else if (match) {
             response.send(match);
         } else {
