@@ -1,6 +1,6 @@
 module.exports = function (robot) {
     robot.hear(/^slutty$/, function (response) {
-        robot.emit('slack.reaction', { message: response.message, name: "+1" });
+        response.emit('slack.reaction', { message: "response", name: "+1" });
     });
 
     robot.hear(/^r\/(\w+)$/i, function (response) {
