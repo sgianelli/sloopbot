@@ -1,4 +1,7 @@
 module.exports = function (robot) {
+    robot.hear(/^slutty$/, function (response) {
+        robot.emit('slack.reaction', { message: response.message, name: "+1" });
+    });
 
     robot.hear(/^r\/(\w+)$/i, function (response) {
         response.send("http://reddit.com/" + response.match[0]);
