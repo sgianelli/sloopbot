@@ -58,9 +58,12 @@ module.exports = function (robot) {
     }
 
     robot.hear(/^bojack me( (.*))?$/i, function (response) {
-        var match = links[response.match[2].toLowerCase()];
+        var word = response.match[2].toLowerCase();
+        var match = links[word];
 
-        if (match) {
+        if (word == "help") {
+            response.send(Object.keys(links).join("\n"));
+        } else if (match) {
             response.send(match);
         } else {
             response.send(random());
