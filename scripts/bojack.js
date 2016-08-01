@@ -115,7 +115,9 @@ module.exports = function (robot) {
         var cMatch = Categories[word];
 
         if (word == "help") {
-            response.send(Object.keys(Links).join("\n").sort());
+            var text = "bojackbot -- `bojack me [phrase]`\n\n`phrase` can be either a keyword or category\n\nKeywords:\n\n" + Object.keys(Links).join("\n").sort() + "\n\nCategories:\n\n" + Object.keys(Categories).join("\n").sort();
+
+            response.send(text);
         } else if (cMatch) {
             var word = cMatch[Math.floor(Math.random() * cMatch.length)];
 
