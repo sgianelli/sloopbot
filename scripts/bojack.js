@@ -53,6 +53,7 @@ module.exports = function (robot) {
     robot.hear(/bojack me/i, function (response) {
         var imageUrl = links[Math.random() % links.length];
         console.log("Image url: " + imageUrl);
+        console.log("links: " + links);
         response.send("bojack");
     });
 };
