@@ -51,7 +51,7 @@ module.exports = function (robot) {
     };
 
     robot.hear(/^bojack me( \w+)?$/i, function (response) {
-        console.log("Response: ", response.matches[0], response.matches[1]);
+        console.log("Response: ", response.match[0], response.match[1]);
         var list = Object.keys(links).map(function (key) { return links[key] });
         var imageUrl = list[Math.floor(Math.random() * list.length)];
 

@@ -13,9 +13,6 @@ module.exports = (robot) ->
   robot.hear /badger/i, (res) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
 
-  robot.hear /foo/i, (res) ->
-    res.send "hooked"
-
   robot.listen(
     (message) ->
       message.user.name is "shane" and message.text is "pong"
