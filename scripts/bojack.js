@@ -57,8 +57,8 @@ module.exports = function (robot) {
         return imageUrl;
     }
 
-    robot.hear(/^bojack me( \w+)?$/i, function (response) {
-        var match = links[response.match[1].toLowerCase()];
+    robot.hear(/^bojack me( (.*))?$/i, function (response) {
+        var match = links[response.match[2].toLowerCase()];
 
         if (match) {
             response.send(match);
