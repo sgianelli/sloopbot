@@ -23,13 +23,6 @@ module.exports = (robot) ->
       response.reply "Hello, master"
   )
 
-  ropot.listen(
-    (message) ->
-      (message.user.name is "shane" or message.user.name is "benjin") and message.text is "rumba?"
-    (response) ->
-      response.reply "Rumba?"
-  )
-
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
   #   if doorType is "pod bay"
