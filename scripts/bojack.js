@@ -117,7 +117,9 @@ module.exports = function (robot) {
         if (word == "help") {
             response.send(Object.keys(Links).join("\n").sort());
         } else if (cMatch) {
-            response.send(cMatch[Math.floor(Math.random() * cMatch.length)]);
+            var word = cMatch[Math.floor(Math.random() * cMatch.length)];
+
+            response.send(Links[word]);
         } else if (match) {
             response.send(match);
         } else {
