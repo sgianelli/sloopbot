@@ -4,12 +4,20 @@ module.exports = function (robot) {
     });
 
     robot.listen(function (message) {
+        if (message.user == null || message.text == null) {
+            return false;
+        }
+
         return message.user.name == "shane" && message.text.toLowerCase() == "rumba?";
     }, function (response) {
         response.send("@benjin: Rumba???");
     });
 
     robot.listen(function (message) {
+        if (message.user == null || message.text == null) {
+            return false;
+        }
+
         return message.user.name == "benjin" && message.text.toLowerCase() == "rumba?";
     }, function (response) {
         response.send("@shane: Rumba???");
